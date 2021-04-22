@@ -2,9 +2,6 @@
 
 using namespace std;
 
-#define FOR(n) for(int i = 0; i < int(n); ++i)
-#define RFOR(n) for(int i = n; ~i; --i)
-
 void solve() {
 }
 
