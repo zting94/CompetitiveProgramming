@@ -49,7 +49,38 @@ void read(vector<T>& v) {
 		cin >> x;
 }
 
+const int mxK=1e5;
+int vis[mxK+1];
+
 void solve() {
+	int n, k;
+	cin >> n >> k;
+	memset(vis, 0, sizeof(vis));
+	int ans=0, t=0;
+	queue<int> q;
+	q.push(n);
+	while(!q.empty()) {
+		int sz=q.size();
+		for(int i=0; i<sz; ++i) {
+			int v=q.front();
+			q.pop();
+			ans+=v==k;
+			for(auto next : {v-1, v+1, 2*v}) {
+				if(next<0||next>mxK)
+					continue;
+				//need to count different paths which produce same N
+				if(!vis[next]||vis[next]==vis[v]+1) {
+					vis[next]=vis[v]+1;
+					q.push(next);
+				}
+			}
+		}
+		if(ans)
+			break;
+		++t;
+	}
+	print(t);
+	print(ans);
 }
 
 int main(int argc, char* argv[]) {
