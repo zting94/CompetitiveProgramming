@@ -49,7 +49,34 @@ void read(vector<T>& v) {
 		cin >> x;
 }
 
+const int mxK=1e5;
+bool vis[mxK+1];
+
 void solve() {
+	int n, k;
+	cin >> n >> k;
+	int ans=0;
+	unordered_map<int, int> v[2];
+	v[0][n]=1;
+	for(int i=1; i<=mxK+2; ++i) {
+		int j=(i-1)%2, l=i%2;
+		for(auto& [val, cnt] : v[j]) {
+			if(val<0||val>mxK||vis[val])
+				continue;
+			vis[val]=true;
+			ans+=(val==k?cnt:0);
+			v[l][val-1]+=cnt;
+			v[l][val+1]+=cnt;
+			v[l][val*2]+=cnt;
+		}
+		if(ans) {
+			print(i-1);
+			print(ans);
+			return;
+		}
+		v[j].clear();
+	}
+	assert(false);
 }
 
 int main(int argc, char* argv[]) {
