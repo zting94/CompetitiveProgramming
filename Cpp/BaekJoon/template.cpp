@@ -4,22 +4,14 @@ using namespace std;
 
 using ll = long long;
 using ull = unsigned long long;
-
-template<typename T>
-void print(const vector<vector<T>>& v, char sp=' ') {
-	int n=v.size();
-	if(n==0)
-		return;
-	int m=v[0].size();
-	for(int i=0; i<n; ++i) {
-		for(int j=0; j<m; ++j) {
-			if(j>0)
-				cout << sp;
-			cout << v[i][j];
-		}
-		cout << '\n';
-	}
-}
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using vii = vector<pii>;
+using vll = vector<pll>;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vvi = vector<vi>;
+using vvl = vector<vl>;
 
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
@@ -32,21 +24,26 @@ void print(const vector<T>& v, char sp=' ') {
 }
 
 template<typename T>
-void print(T v) {
-	cout << v << '\n';
+void print(const vector<vector<T>>& v, char sp=' ') {
+	for(auto& vv : v)
+		print(vv, sp);
 }
 
 template<typename T>
-void read(vector<vector<T>>& v) {
-	for(auto& a : v)
-		for(auto& i : a)
-			cin >> i;
+void print(T v) {
+	cout << v << '\n';
 }
 
 template<typename T>
 void read(vector<T>& v) {
 	for(auto& x : v)
 		cin >> x;
+}
+
+template<typename T>
+void read(vector<vector<T>>& v) {
+	for(auto& a : v)
+		read(a);
 }
 
 void solve() {
