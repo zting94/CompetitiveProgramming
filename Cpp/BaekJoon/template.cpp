@@ -35,6 +35,16 @@ void print(T v) {
 }
 
 template<typename T>
+void print(T v[], int sz, char sp=' ') {
+	for(int i=0; i<sz; ++i) {
+		if(i>0)
+			cout << sp;
+		cout << v[i];
+	}
+	cout << '\n';
+}
+
+template<typename T>
 void read(vector<T>& v) {
 	for(auto& x : v)
 		cin >> x;
@@ -44,6 +54,12 @@ template<typename T>
 void read(vector<vector<T>>& v) {
 	for(auto& a : v)
 		read(a);
+}
+
+template<typename T>
+void read(T a[], int sz) {
+	for(int i=0; i<sz; ++i)
+		cin >> a[i];
 }
 
 void solve() {
