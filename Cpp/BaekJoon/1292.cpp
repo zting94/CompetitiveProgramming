@@ -66,6 +66,16 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int a, b;
+	cin >> a >> b;
+	vector<int> v(b+1, 0);
+	int k=1;
+	for(int i=1; k<=b; ++i) {
+		for(int j=1; j<=i&&k<=b; ++j) {
+			v[k++]=i;
+		}
+	}
+	print(accumulate(v.begin()+a, v.begin()+b+1, 0));
 }
 
 int main(int argc, char* argv[]) {

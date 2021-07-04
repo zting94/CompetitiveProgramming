@@ -14,7 +14,6 @@ using vvi = vector<vi>;
 using vvl = vector<vl>;
 
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
 
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
@@ -65,7 +64,41 @@ void read(T a[], int sz) {
 		cin >> a[i];
 }
 
+int L, C;
+vector<char> a;
+
+int cnt1(int a, char c) {
+	if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u')
+		return a+1;
+	return a;
+}
+
+int cnt2(int a, char c) {
+	if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u')
+		return a;
+	return a+1;
+}
+
+void dfs(int i, string& s, int m, int j) {
+	if(i+1==C||s.size()==L) {
+		if(s.size()==L&&m>=1&&j>=2) 
+			print(s);
+		return;
+	}
+	for(int n=i+1; n<C; ++n) {
+		s.push_back(a[n]);
+		dfs(n, s, cnt1(m, a[n]), cnt2(j, a[n]));
+		s.pop_back();
+	}
+}
+
 void solve() {
+	cin >> L >> C;
+	a=vector<char>(C);
+	read(a);
+	sort(all(a));
+	string s;
+	dfs(-1, s, 0, 0);
 }
 
 int main(int argc, char* argv[]) {

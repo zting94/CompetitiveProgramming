@@ -13,9 +13,6 @@ using vl = vector<ll>;
 using vvi = vector<vi>;
 using vvl = vector<vl>;
 
-#define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
-
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
 	for(int i=0; i<v.size(); ++i) {
@@ -66,13 +63,19 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int a, b;
+	cin >> a >> b;
+	print(a*b/__gcd(a, b));
 }
 
 int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    solve();
+	int t;
+	cin >> t;
+	while(t--)
+    	solve();
 
     return 0;
 }

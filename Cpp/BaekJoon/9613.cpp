@@ -66,13 +66,25 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int n;
+	cin >> n;
+	vi a(n);
+	read(a);
+	ll s=0;
+	for(int i=0; i<n-1; ++i)
+		for(int j=i+1; j<n; ++j)
+			s+=__gcd(a[i], a[j]);
+	print(s);
 }
 
 int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    solve();
+	int t;
+	cin >> t;
+	while(t--)
+    	solve();
 
     return 0;
 }

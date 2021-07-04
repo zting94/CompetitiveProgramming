@@ -13,9 +13,6 @@ using vl = vector<ll>;
 using vvi = vector<vi>;
 using vvl = vector<vl>;
 
-#define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
-
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
 	for(int i=0; i<v.size(); ++i) {
@@ -65,14 +62,40 @@ void read(T a[], int sz) {
 		cin >> a[i];
 }
 
+const int mxN=13;
+int n, a[mxN];
+
+void dfs(int i, vi& v, int c) {
+	if(i+1==n||c==0) {
+		if(c==0)
+			print(v);
+		return;
+	}
+	for(int j=i+1; j<n; ++j) {
+		v.push_back(a[j]);
+		dfs(j, v, c-1);
+		v.pop_back();
+	}
+}
+
+
 void solve() {
+	read(a, n);
+	vi v;
+	dfs(-1, v, 6);
+	cout << '\n';
 }
 
 int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    solve();
+	while(1) {
+		cin >> n;
+		if(n==0)
+			break;
+		solve();
+	}
 
     return 0;
 }
