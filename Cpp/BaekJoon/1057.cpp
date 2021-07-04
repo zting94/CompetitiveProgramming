@@ -66,6 +66,14 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int n, a, b, c=0;
+	cin >> n >> a >> b;
+	while(a!=b) {
+		a=(a+1)/2;
+		b=(b+1)/2;
+		++c;
+	}
+	print(c);
 }
 
 int main(int argc, char* argv[]) {

@@ -14,7 +14,6 @@ using vvi = vector<vi>;
 using vvl = vector<vl>;
 
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).rbegin(), (x).rend()
 
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
@@ -66,6 +65,17 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int x;
+	cin >> x;
+	int ans=0;
+	for(int i=64; i>=1; i/=2) {
+		if(x>=i) {
+			x-=i;
+			++ans;
+		}
+	}
+	assert(x==0);
+	print(ans);
 }
 
 int main(int argc, char* argv[]) {
