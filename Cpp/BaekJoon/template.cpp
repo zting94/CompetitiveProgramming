@@ -13,6 +13,8 @@ using vl = vector<ll>;
 using vvi = vector<vi>;
 using vvl = vector<vl>;
 
+#define all(x) (x).begin(), (x).end()
+
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
 	for(int i=0; i<v.size(); ++i) {
