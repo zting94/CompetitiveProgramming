@@ -108,7 +108,43 @@ void read(T a[], int sz) {
 		cin >> a[i];
 }
 
+const int mxN=501;
+int N, M, dp[mxN][mxN];
+string s[mxN];
+bool v[mxN][mxN];
+
+int go(int i, int j) {
+	if(i<0||j<0||i>=N||j>=M)
+		return 1;
+	if(v[i][j])
+		return 0;
+	int& ret=dp[i][j];
+	if(ret!=-1)
+		return ret;
+	v[i][j]=1;
+	if(s[i][j]=='U')
+		ret=go(i-1, j);
+	else if(s[i][j]=='R')
+		ret=go(i, j+1);
+	else if(s[i][j]=='D')
+		ret=go(i+1, j);
+	else
+		ret=go(i, j-1);
+	v[i][j]=0;
+	return ret;
+}
+
 void solve() {
+	memset(dp, -1, sizeof(dp));
+	memset(v, 0, sizeof(v));
+	cin >> N >> M;
+	for(int i=0; i<N; ++i)
+		cin >> s[i];
+	int ans=0;
+	for(int i=0; i<N; ++i)
+		for(int j=0; j<M; ++j)
+			ans+=go(i, j);
+	print(ans);
 }
 
 int main(int argc, char* argv[]) {
