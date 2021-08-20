@@ -30,21 +30,21 @@ void __zbg(bool v) { cerr << v?"true":"false"; }
 template<typename T, typename V>
 void __zbg(const pair<T, V>& v) {
 	cerr << '{';
-   	__zbg(v.first);
-   	cerr << ", ";
-   	__zbg(v.second);
-   	cerr << '}';
+	__zbg(v.first);
+	cerr << ", ";
+	__zbg(v.second);
+	cerr << '}';
 }
 
 template<typename T>
 void __zbg(const T& x) {
 	int f=0;
-   	cerr << '{';
-   	for(auto& i : x) {
+	cerr << '{';
+	for (auto &i : x) {
 		cerr << (f++?", ":"");
 		__zbg(i);
 	}
-   	cerr << '}';
+	cerr << '}';
 }
 
 void _zbg() { cerr << "]\n"; }
