@@ -112,6 +112,28 @@ void read(T a[], int sz) {
 }
 
 void solve() {
+	int n;
+	cin >> n;
+	vii a(n);
+	for(auto& i : a)
+		cin >> i.first >> i.second;
+	sort(all(a), [](auto& l, auto& r) {
+		if(l.second==r.second)
+			return l.first>r.first;
+		return l.second<r.second;
+	});
+	priority_queue<int, vi, greater<int>> pq;
+	int ans=0, last=-1;
+	for(auto& [p, d] : a) {
+		ans+=p;
+		pq.push(p);
+		last=d;
+		if(pq.size()>last) {
+			ans-=pq.top();
+			pq.pop();
+		}
+	}
+	print(ans);
 }
 
 int main(int argc, char* argv[]) {
