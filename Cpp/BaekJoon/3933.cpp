@@ -25,7 +25,7 @@ void __zbg(long double v) { cerr << v; }
 void __zbg(char v) { cerr << '\'' << v << '\''; }
 void __zbg(const char* v) { cerr << '\'' << v << '\''; }
 void __zbg(const string& v) { cerr << '\'' << v << '\''; }
-void __zbg(bool v) { cerr << (v?"true":"false"); }
+void __zbg(bool v) { cerr << v?"true":"false"; }
 
 template<typename T, typename V>
 void __zbg(const pair<T, V>& v) {
@@ -111,14 +111,32 @@ void read(T a[], int sz) {
 		cin >> a[i];
 }
 
+const int mxN=(1<<15)+1;
+
 void solve() {
+	vvi dp(mxN+1, vi(4));
+	for(int i=1; i*i<=mxN; ++i) {
+		dp[i*i][0]=1;
+		for(int j=i*i; j<=mxN; ++j) {
+			dp[j][1]+=dp[j-i*i][0];
+			dp[j][2]+=dp[j-i*i][1];
+			dp[j][3]+=dp[j-i*i][2];
+		}
+	}
+	int t;
+	while(true) {
+		cin >> t;
+		if(t==0)
+			break;
+		cout << accumulate(all(dp[t]), 0) << nl;
+	}
 }
 
 int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    solve();
+	solve();
 
     return 0;
 }
