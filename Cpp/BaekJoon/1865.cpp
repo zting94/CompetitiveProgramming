@@ -112,15 +112,55 @@ void read(T a[], int sz) {
 }
 
 const int dx[4]={-1, 0, 1, 0}, dy[4]={0, -1, 0, 1};
+const int mxN=501;
+const ll mx=1e18;
+int N, M, W;
 
 void solve() {
+	cin >> N >> M >> W;
+	vector<vii> adj(N);
+	for(int i=0; i<M; ++i) {
+		int u, v, d;
+		cin >> u >> v >> d, --u, --v;
+		adj[u].push_back({v, d});
+		adj[v].push_back({u, d});
+	}
+	for(int i=0; i<W; ++i) {
+		int u, v, d;
+		cin >> u >> v >> d, --u, --v;
+		adj[u].push_back({v, -d});
+	}
+	bool cycle=false;
+	vector<bool> vis(N, false);
+	for(int n=0; n<N&&!cycle; ++n) {
+		if(vis[n])
+			continue;
+		vl dist(N, mx);
+		dist[n]=0;
+		for(int i=0; i<N; ++i) {
+			for(int j=0; j<N; ++j) {
+				for(auto [v, d] : adj[j]) {
+					if(dist[j]!=mx&&dist[v]>dist[j]+d) {
+						dist[v]=dist[j]+d;
+						vis[v]=true;
+						if(i==N-1)
+							cycle=true;
+					}
+				}
+			}
+		}
+	}
+	print(cycle?"YES":"NO");
 }
 
 int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    solve();
+	int tt;
+	cin >> tt;
+	while(tt--)
+		solve();
 
     return 0;
 }
