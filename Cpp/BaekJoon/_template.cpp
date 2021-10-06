@@ -14,7 +14,7 @@ using vvi = vector<vi>;
 using vvl = vector<vl>;
 
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
 
 const int dx[4]={-1, 0, 1, 0}, dy[4]={0, -1, 0, 1};
