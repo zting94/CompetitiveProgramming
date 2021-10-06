@@ -60,6 +60,16 @@ ll ppow(ll a, ll b) {
 	return (t*t)%M;
 }
 
+ll ppow2(ll a, ll b) {
+	ll ret=1;
+	while(b) {
+		if(b&1)
+			ret=(ret*a)%M;
+		a=(a*a)%M;
+		b>>=1;
+	}
+	return ret;
+}
 
 void solve() {
 	cin >> N >> K;
@@ -78,7 +88,7 @@ void solve() {
 		c*=i;
 		c%=M;
 	}
-	print((a*ppow((b*c)%M, M-2))%M);
+	print((a*ppow2((b*c)%M, M-2))%M);
 }
 
 int main(int argc, char* argv[]) {

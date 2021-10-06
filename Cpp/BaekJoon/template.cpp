@@ -13,53 +13,8 @@ using vl = vector<ll>;
 using vvi = vector<vi>;
 using vvl = vector<vl>;
 
-void __zbg(int v) { cerr << v; }
-void __zbg(long v) { cerr << v; }
-void __zbg(ll v) { cerr << v; }
-void __zbg(unsigned v) { cerr << v; }
-void __zbg(unsigned long v) { cerr << v; }
-void __zbg(ull v) { cerr << v; }
-void __zbg(float v) { cerr << v; }
-void __zbg(double v) { cerr << v; }
-void __zbg(long double v) { cerr << v; }
-void __zbg(char v) { cerr << '\'' << v << '\''; }
-void __zbg(const char* v) { cerr << '\'' << v << '\''; }
-void __zbg(const string& v) { cerr << '\'' << v << '\''; }
-void __zbg(bool v) { cerr << (v?"true":"false"); }
-
-template<typename T, typename V>
-void __zbg(const pair<T, V>& v) {
-	cerr << '{';
-	__zbg(v.first);
-	cerr << ", ";
-	__zbg(v.second);
-	cerr << '}';
-}
-
-template<typename T>
-void __zbg(const T& x) {
-	int f=0;
-	cerr << '{';
-	for (auto &i : x) {
-		cerr << (f++?", ":"");
-		__zbg(i);
-	}
-	cerr << '}';
-}
-
-void _zbg() { cerr << "]\n"; }
-
-template<typename T, typename... V>
-void _zbg(T t, V... v) {
-	__zbg(t);
-	if(sizeof...(v))
-		cerr << ", ";
-	_zbg(v...);
-}
-//#define dbg(x...) cerr << "\033[91m"<<__func__<<":"<<__LINE__<<" [" << #x << "] = ["; _zbg(x); cerr << "\033[39m" << endl;
-#define dbg(x...) cerr << __func__<<":"<<__LINE__<<" [" << #x << "] = ["; _zbg(x); cerr << endl;
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
 
 template<typename T>

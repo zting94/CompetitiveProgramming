@@ -60,7 +60,7 @@ void _zbg(T t, V... v) {
 #define dbg(x...) cerr << __func__<<":"<<__LINE__<<" [" << #x << "] = ["; _zbg(x); cerr << endl;
 
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {

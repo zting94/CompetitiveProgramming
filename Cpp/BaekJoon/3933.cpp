@@ -59,7 +59,7 @@ void _zbg(T t, V... v) {
 //#define dbg(x...) cerr << "\033[91m"<<__func__<<":"<<__LINE__<<" [" << #x << "] = ["; _zbg(x); cerr << "\033[39m" << endl;
 #define dbg(x...) cerr << __func__<<":"<<__LINE__<<" [" << #x << "] = ["; _zbg(x); cerr << endl;
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
 
 template<typename T>
