@@ -17,8 +17,14 @@ using vvl = vector<vl>;
 #define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
 
+
+template<typename T, typename V>
+void print(const pair<T, V>& p, string sp=" ") {
+	cout << p.first << sp << p.second << nl;
+}
+
 template<typename T>
-void print(const vector<T>& v, char sp=' ') {
+void print(const vector<T>& v, string sp=" ") {
 	for(int i=0; i<v.size(); ++i) {
 		if(i>0)
 			cout << sp;
@@ -28,7 +34,7 @@ void print(const vector<T>& v, char sp=' ') {
 }
 
 template<typename T>
-void print(const vector<vector<T>>& v, char sp=' ') {
+void print(const vector<vector<T>>& v, string sp=" ") {
 	for(auto& vv : v)
 		print(vv, sp);
 }
@@ -39,13 +45,19 @@ void print(T v) {
 }
 
 template<typename T>
-void print(T v[], int sz, char sp=' ') {
+void print(T v[], int sz, string sp=" ") {
 	for(int i=0; i<sz; ++i) {
 		if(i>0)
 			cout << sp;
 		cout << v[i];
 	}
 	cout << '\n';
+}
+
+template<typename T, typename V>
+istream& operator>>(istream& o, pair<T, V>& v) {
+	o >> v.first >> v.second;
+	return o;
 }
 
 template<typename T>
