@@ -15,6 +15,7 @@ using vvl = vector<vl>;
 
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
+#define nl '\n'
 
 template<typename T>
 void print(const vector<T>& v, char sp=' ') {
@@ -65,6 +66,8 @@ void read(T a[], int sz) {
 		cin >> a[i];
 }
 
+const int dx[4]={-1, 0, 1, 0}, dy[4]={0, -1, 0, 1};
+
 void solve() {
 }
 
@@ -72,11 +75,10 @@ int main(int argc, char* argv[]) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int tt;
-    cin >> tt;
-    while(tt--) {
-    	solve();
-    }
+	int tt;
+	cin >> tt;
+	while(tt--)
+		solve();
 
     return 0;
 }
