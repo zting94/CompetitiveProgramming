@@ -16,6 +16,8 @@ using vvl = vector<vl>;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
+#define fs first
+#define sd second
 
 
 template<typename T, typename V>
