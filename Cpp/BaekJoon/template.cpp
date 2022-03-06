@@ -16,13 +16,13 @@ using vvl = vector<vl>;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define nl '\n'
-#define fs first
-#define sd second
+#define fi first
+#define sn second
 
 
 template<typename T, typename V>
 void print(const pair<T, V>& p, string sp=" ") {
-	cout << p.first << sp << p.second << nl;
+	cout << p.fi << sp << p.sn << nl;
 }
 
 template<typename T>
@@ -56,9 +56,15 @@ void print(T v[], int sz, string sp=" ") {
 	cout << '\n';
 }
 
+template<typename T>
+void print(T* A, int N, int M, string sp=" ") {
+	for(int i=0; i<N; ++i)
+		print(A[i], M, sp);
+}
+
 template<typename T, typename V>
 istream& operator>>(istream& o, pair<T, V>& v) {
-	o >> v.first >> v.second;
+	o >> v.fi >> v.sn;
 	return o;
 }
 
@@ -78,6 +84,12 @@ template<typename T>
 void read(T a[], int sz) {
 	for(int i=0; i<sz; ++i)
 		cin >> a[i];
+}
+
+template<typename T>
+void read(T* A, int N, int M) {
+	for(int i=0; i<N; ++i)
+		read(A[i], M);
 }
 
 const int dx[4]={-1, 0, 1, 0}, dy[4]={0, -1, 0, 1};
