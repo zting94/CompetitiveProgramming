@@ -70,23 +70,24 @@ const int dx[4]={-1, 0, 1, 0}, dy[4]={0, -1, 0, 1};
 const int mxN=1e3+5, mxK=105, M=998244353;
 int N, K;
 ll dp[mxN][mxK][2], ans;
-//dp[i][K][0] == last two number are NOT strictly increasing
-//dp[i][K][1] == last two number are strictly increasing
+//dp[i][K][0] == last two number are NOT strictly decreasing
+//dp[i][K][1] == last two number are strictly decreasing
+//we can do it in reverse order(?)
 
 void solve() {
     cin >> N >> K;
     for(int i=1; i<=K; ++i)
         dp[1][i][0]=1;
     for(int i=2; i<=N; ++i) {
-        for(int j=1; j<=K; ++j) {
-            dp[i-1][j][0]+=dp[i-1][j-1][0];
+        for(int j=K; j>=0; --j) {
+            dp[i-1][j][0]+=dp[i-1][j+1][0];
             dp[i-1][j][0]%=M;
-            dp[i-1][j][1]+=dp[i-1][j-1][1];
+            dp[i-1][j][1]+=dp[i-1][j+1][1];
             dp[i-1][j][1]%=M;
         }
         for(int j=1; j<=K; ++j) {
-            dp[i][j][0]=(dp[i-1][K][0]-dp[i-1][j-1][0]+M+dp[i-1][j][1]-dp[i-1][j-1][1]+M)%M;
-            dp[i][j][1]=(dp[i-1][j-1][0]+dp[i-1][j-1][1])%M;
+            dp[i][j][0]=(dp[i-1][0][0]-dp[i-1][j+1][0]+M+dp[i-1][j][1]-dp[i-1][j+1][1]+M)%M;
+            dp[i][j][1]=(dp[i-1][j+1][0]+dp[i-1][j+1][1])%M;
         }
     }
     for(int i=1; i<=K; ++i)
